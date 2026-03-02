@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai 14</title>
+    <script language="javascript">
+        function tinh_ucln_bcnn() {
+            var x,y,z,delta;
+            x = eval(f.txtSoa.value);
+            y = eval(f.txtSob.value);
+            var so1 = x;
+            var so2 = y;
+            while (so1 != so2) {
+                if (so1 > so2) {
+                    so1 = so1 - so2;
+                }
+                else {
+                    so2 = so2 - so1;
+                }
+            }
+            f.x.value=eval(so1);
+            so2 = (x*y)/so1;
+            f.y.value=eval(so2);
+        }
+    </script>
+</head>
+<body>
+    <form name="f">
+        <table>
+            <tr>
+                <td>Nhập giá trị a:</td>
+                <td><input type="text" size="28" name="txtSoa"></td>
+            </tr>
+            <tr>
+                <td>Nhập giá trị b:</td>
+                <td><input type="text" size="28" name="txtSob"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    UCLN:
+                    <input type="text" name="x" size="10">
+                    BCNN:
+                    <input type="text" name="y" size="10">
+                    <input type="button" value="Giải" onclick="tinh_ucln_bcnn()">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

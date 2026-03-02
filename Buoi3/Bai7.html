@@ -1,0 +1,115 @@
+	<html>
+	<head>
+	    <title>Kiểm tra form</title>	
+        <meta charset="utf-8" />
+        <script language="Javascript">
+            function kiemtraform(){
+                // Họ tên bắt buộc nhập
+                if (f.txtHoTen.value == ""){
+                    alert("Họ tên không được để trống");
+                    f.txtHoTen.focus();
+                    return false;
+                }
+                // Chọn năm sinh: ứng viên phairn >= 16 tuổi (so với năm sinh hiện hành)
+                var d = new Date();
+                if (d.getFullYear() - parseInt(f.optNamSinh.value) < 16){
+                    alert("Ứng viên phải >= 16 tuổi");
+                    f.optNamSinh.focus();
+                    return false;
+                }
+                // phải chọn ít nhất 1 hình thức làm việc
+                if (f.chkHinhThucToanTG.checked == false && f.chkHinhThucBanTG.checked == false){
+                    alert("Phải chọn ít nhất 1 hình thức làm việc");
+                    f.chkHinhThucToanTG.focus();
+                    return false;
+                }
+                // Nếu tất cả hợp lệ thì hiện thị thông tin trên cửa sổ mới
+                hienthithongtin();
+                return true;
+            }
+            // Mức lương phải là số (nếu có)
+            function kiemtraluong(){
+                if (isNaN(f.txtMucLuong.value)){
+                    alert("Mức lương phải là số");
+                    f.txtMucLuong.focus();
+                    return false;
+                }
+                return true;
+            }
+            // Hiện thị thông tin trên cửa sổ mới
+            function hienthithongtin () {
+                var csmoi = window.open ('');
+                csmoi.document.write ('Cảm ơn! Bên dưới là thông tin đăng ký của bạn: ');
+                csmoi.document.write ('<br/>Ho tên: ' + f.txtHoTen.value);
+                csmoi.document.write ('<br/>Năm sinh: ' + f.optNamSinh.value);
+                csmoi.document.write('<br/>Giói tính: ') ;
+                if(f.radGioiTinh [0].checked == true)
+                    csmoi.document.write(f.radGioiTinh[0].value);
+                else
+                    csmoi.document.write (f.radGioiTinh[1].value);
+
+                csmoi.document.write ('<br/>Muc luơng đe nghị: ' + f.txtMucLuong.value);
+                csmoi.document.write ('<br/>Hình thức làm việc: ' )
+                if(f.chkHinhThucToanTG.checked == true)
+                    csmoi.document.write (f.chkHinhThucToanTG.value);
+                if(f.chkHinhThucBanTG.checked == true)
+                    csmoi.document.write (f.chkHinhThucBanTG.value);
+                csmoi.document.write('<br/>Thong tin bồ sung: ' + f.txtThongTin.value) ;
+            }
+        </script>
+	</head>
+
+	<body>
+	<form name="f">
+		<table border="0" cellpadding="5" cellspacing="0" width="498">
+			<tr>
+				<td colspan="2" align="center">THÔNG TIN ỨNG VIÊN </td>
+			</tr>
+			<tr>
+				<td>Họ tên</td>
+				<td><input type="text" size="28" name="txtHoTen"/></td>
+			</tr>
+			<tr>
+				<td>Năm sinh</td>
+				<td>
+				<select name="optNamSinh">
+					<script language="Javascript">
+					var d = new Date();
+					for (i=d.getFullYear(); i>=1950; i--){
+						document.write('<option value="' + i + '">' + i + '</option>');
+					}
+					</script>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Giới tính</td>
+				<td>
+					<input type="radio" name="radGioiTinh" value="Nam" checked="true"/>Nam 
+					<input type="radio" name="radGioiTinh" value="Nữ"/>Nữ
+				</td>
+			</tr>
+			<tr>
+				<td>Mức lương đề nghị</td>
+				<td><input type="text" name="txtMucLuong" onchange="kiemtraluong();"/></td>
+			</tr>
+			<tr>
+				<td>Hình thức làm việc</td>
+				<td>
+					<input type="checkbox" name="chkHinhThucToanTG" value="Toàn thời gian"/>Toàn thời gian 
+					<input type="checkbox" name="chkHinhThucBanTG" value="Bán thời gian"/>Bán thời gian
+				</td>
+			</tr>
+			<tr>
+				<td>Thông tin khác</td>
+				<td><textarea rows="4" cols="25" name="txtThongTin"></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="button" value="Gửi" onclick="kiemtraform();"/> 
+					<input type="reset" value="Xóa"/>
+				</td>
+			</tr>	
+		</table>
+		</form>
+		</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Bài 12 - Slide Show</title>
+
+<script language="javascript">
+
+    var current = 1;     // ảnh hiện tại
+    var numIMG = 6;      // tổng số ảnh
+
+    function switchImage() {
+        current++;
+
+        // Nếu vượt quá số ảnh thì quay lại ảnh đầu
+        if (current > numIMG) {
+            current = 1;
+        }
+
+        // Thay đổi ảnh
+        document.images["myimage"].src =
+            "images/image" + current + ".jpg";
+
+        // Lặp lại sau 3 giây
+        setTimeout("switchImage()", 3000);
+    }
+
+    // Khi trang load xong
+    window.onload = function () {
+        setTimeout("switchImage()", 3000);
+    }
+
+</script>
+</head>
+
+<body>
+
+    <div align="center">
+        <img name="myimage"
+             src="images/image1.jpg"
+             width="400"
+             height="300">
+    </div>
+
+</body>
+</html>

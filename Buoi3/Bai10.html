@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Bài 10</title>
+
+    <!-- Gọi file CSS -->
+    <link rel="stylesheet" href="bai10.css">
+</head>
+<body>
+
+    <div id="myDiv">
+        Cùng học javascript
+    </div>
+    
+    <script language="javascript">
+    function change_background()
+    {
+        document.getElementById("message").style.background = 'yellow';
+    }
+
+    function change_color()
+    {
+        document.getElementById("message").style.color = 'blue';
+    }
+
+    function change_height()
+    {
+        document.getElementById("message").style.height = '500px';
+    }
+
+    function change_font_size()
+    {
+        document.getElementById("message").style.fontSize = '20px';
+    }
+</script>
+
+<div id="message">
+    Chào mừng các bạn đến với freetuts.net
+</div>
+
+<input type="button" value="Change bakgroud" onclick="change_background()" />
+<input type="button" value="Change color" onclick="change_color()" />
+<input type="button" value="Change height" onclick="change_height()" />
+<input type="button" value="Change fontsize" onclick="change_font_size()" />
+
+</body>
+</html>

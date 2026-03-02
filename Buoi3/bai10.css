@@ -1,0 +1,7 @@
+#myDiv {
+    border: 2px solid blue; /* viền xanh */
+    color: black;            /* chữ đen */
+    height: 80px;            /* cao 40px */
+    font-size: 12px;         /* chữ 12px */
+    line-height: 40px;       /* căn giữa theo chiều dọc */
+}

@@ -1,0 +1,50 @@
+<form name="f1" onsubmit="return tinh();">
+    <table border="1" align="center" cellpadding="5" style="border-collapse:collapse;">
+        <tr>
+            <th>DỊCH VỤ</th>
+            <th>ĐƠN GIÁ</th>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="giat" value="8000" checked> Giặt</td>
+            <td>8.000</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="hap" value="5000"> Hấp</td>
+            <td>5.000</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="ui" value="30000"> Ủi</td>
+            <td>30.000</td>
+        </tr>
+        <tr>
+            <td>Số kg:</td>
+            <td><input type="text" name="sokg" size="5"></td>
+        </tr>
+        <tr>
+            <td>Tổng tiền:</td>
+            <td><input type="text" name="sotien" readonly></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="Tính">
+                <input type="reset" value="Xóa" onclick="f.sotien.value='';">
+            </td>
+        </tr>
+    </table>
+</form>
+<script language="javascript">
+    function tinh() {
+        var tiengiat = 0;
+        var tienhap = 0;
+        var tienui = 0;
+
+        if(f1.giat.checked == true)
+        tiengiat = f1.giat.value;
+        if(f1.hap.checked == true)
+        tienhap = f1.hap.value;
+        if(f1.ui.checked = true)
+        tienui = f1.ui.value;
+        f1.sotien.value = (eval(tiengiat) + eval (tienhap) + eval(tienui) ) * f1.sokg.value;
+        return false;
+    }
+</script>

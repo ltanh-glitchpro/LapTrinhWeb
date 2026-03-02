@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <title>Kiểm tra tính hợp lệ của mail</title>
+</head>
+<body>
+
+<script>
+function kiemTraEmail(the_email) {
+
+    var acong = the_email.indexOf("@");        // vị trí @
+    var daucham = the_email.lastIndexOf("."); // vị trí dấu . cuối
+    var khoangtrang = the_email.indexOf(" "); // kiểm tra khoảng trắng
+
+    if (
+        (acong < 1) ||                       // Không có @ hoặc @ ở đầu
+        (daucham < acong + 1) ||             // Không có ký tự giữa @ và .
+        (daucham == the_email.length - 1) || // Không có ký tự sau dấu .
+        (khoangtrang != -1)                  // Có khoảng trắng
+       )
+    {
+        alert("Email không hợp lệ");
+        return false;
+    }
+    else {
+        alert("Email hợp lệ");
+        return true;
+    }
+}
+</script>
+
+<form action="#" method="POST" name="f" 
+      onsubmit="return kiemTraEmail(f.emailbox.value);">
+
+    <input type="text" name="emailbox" placeholder="Nhập email">
+    <input type="submit" value="Gởi" />
+
+</form>
+
+</body>
+</html>
